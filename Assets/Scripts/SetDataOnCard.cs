@@ -7,32 +7,31 @@ using TMPro;
 
 
 public class SetDataOnCard : MonoBehaviour {
+	[HideInInspector]
 	public Card cardData;
-	[SerializeField]
-	private TextMeshProUGUI nameText;
-	[SerializeField]
-	private TextMeshProUGUI descriptionText;
-	[SerializeField]
-	private Image artworkImage;
-	[SerializeField]
-	private TextMeshProUGUI manaText;
-	[SerializeField]
-	private TextMeshProUGUI damageText;
-	[SerializeField]
-	private TextMeshProUGUI healthText;
+
+	public TextMeshProUGUI nameText;
+	public TextMeshProUGUI descriptionText;
+	public Image artworkImage;
+	public TextMeshProUGUI manaText;
+	public TextMeshProUGUI damageText;
+	public TextMeshProUGUI healthText;
 
 	// Use this for initialization
 	public void Init () {
 		
-		nameText.text = cardData.name;
-		descriptionText.text = cardData.description;
-		artworkImage.sprite = cardData.artwork;
-		manaText.text += cardData.manaCost.ToString();
-		damageText.text += cardData.attack.ToString();
-		healthText.text += cardData.health.ToString();
+			Debug.Log("Card Initilized");
+			nameText.text = cardData.name;
+			descriptionText.text = cardData.description;
+			artworkImage.sprite = cardData.artwork;
+			manaText.text += cardData.manaCost.ToString();
+			damageText.text += cardData.attack.ToString();
+			healthText.text += cardData.health.ToString();
+		
+	
 	}
 	
-	public void GetCard(Card CardData)
+	public void SetCard(Card CardData)
     {
 		cardData = CardData;
     }

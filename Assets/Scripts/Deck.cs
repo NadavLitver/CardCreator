@@ -9,25 +9,28 @@ public class Deck : MonoBehaviour
     [SerializeField]
     private List<Card> cardDataList;
     private int cardAmount;
-    [SerializeField]
-    private Canvas fatherCanvas;
+   
+    public Canvas fatherCanvas;
+
+    public Hand playerHand;
+
+    public List<GameObject> deckList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         cardAmount = cardDataList.Count;
         for (int i = 0; i < cardAmount; i++)
         {
-            Instantiate(cardPrefab, fatherCanvas.transform);
-            var dataSetter = cardPrefab.GetComponent<SetDataOnCard>();
-            dataSetter.GetCard(cardDataList[i]);
+            GameObject curCard = Instantiate(cardPrefab, fatherCanvas.transform);
+            SetDataOnCard dataSetter = curCard.GetComponent<SetDataOnCard>();
+            dataSetter.SetCard(cardDataList[i]);
             dataSetter.Init();
+            
+            deckList.Add(curCard);
             cardPrefab.SetActive(false);
         }
+        playerHand.LoadHand();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
